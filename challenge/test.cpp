@@ -4,8 +4,10 @@ using namespace std;
 
 int main()
 {
+    //check distane equal to ~ 43km
     cout << distance(51.15,1.33,50.97,1.85) << endl;
 
+    //check distance between two chargers
     int initial = find_row_index("Salina_KS");
     int goal = find_row_index("Perry_OK");
 
@@ -16,7 +18,7 @@ int main()
     lon1 = network[initial].lon;
     lat2 = network[goal].lat;
     lon2 = network[goal].lon;
-
+    
     cout<< distance(lat1,lon1,lat2,lon2) << endl;
 
 }
