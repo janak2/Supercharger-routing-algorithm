@@ -128,13 +128,13 @@ void print_solution(int path[], int initial, int goal, double **d_matrix)
     for(int i=0;i<short_path.size();i++)
     {
         int current = short_path[i];
-        if(current ==initial) cout << network[initial].name << ", ";
-        else if(current == goal) cout << network[goal].name ;
+        if(current ==initial) cout << "\"" << network[initial].name << ", ";
+        else if(current == goal) cout  << network[goal].name  << "\"" ;
         else
         {
             int next = short_path[i+1];
             double rate = network[current].rate;
-            double charge = max((double)0,d_matrix[current][next]-capacity);
+            double charge = max((double)0,d_matrix[current][next]-capacity+1);
             cout << network[current].name << ", " << charge/rate << ", ";
             capacity = capacity - d_matrix[current][next] + charge;
         }
