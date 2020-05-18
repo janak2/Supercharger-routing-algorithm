@@ -1,12 +1,15 @@
 #ifndef MAIN_H_INCLUDED
 #define MAIN_H_INCLUDED
 #include "math.h"
+#include "network.h"
 #include <algorithm>    // std::min
 #include <iostream>
 
 using namespace std;
 
 double distance(double lat1,double lon1, double lat2, double lon2);
+
+int find_row_index(string name);
 
 double distance(double lat1,double lon1, double lat2, double lon2)
 {
@@ -30,6 +33,16 @@ double distance(double lat1,double lon1, double lat2, double lon2)
 
     return d;
 }
+
+int find_row_index(string name)
+{
+    for(int i=0;i<network.size();i++)
+    {
+        if(network[i].name == name) return i;
+    }
+    return -1;
+}
+
 
 
 #endif

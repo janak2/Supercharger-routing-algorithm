@@ -1,4 +1,3 @@
-#include "network.h"
 #include <queue>
 #include "float.h"
 #include <vector>
@@ -55,6 +54,7 @@ void create_distance_charge_matrix(double **matrix,double **distance_m, int size
     }
 }
 
+/*
 int find_row_index(string name)
 {
     for(int i=0;i<network.size();i++)
@@ -63,7 +63,7 @@ int find_row_index(string name)
     }
     return -1;
 }
-
+*/
 
 void find_path(double **d_matrix, double ** d_c_matrix, int initial, int goal,int *path,int size)
 {
@@ -128,14 +128,17 @@ void print_solution(int path[], int initial, int goal, double **d_matrix)
     for(int i=0;i<short_path.size();i++)
     {
         int current = short_path[i];
-        if(current ==initial) cout << network[initial].name << ", ";
-        else if(current == goal) cout << network[goal].name ;
+        if(current == goal) cout << network[goal].name ;
         else
         {
             int next = short_path[i+1];
+            
             double rate = network[current].rate;
             double charge = max((double)0,d_matrix[current][next]-capacity);
-            cout << network[current].name << ", " << charge/rate << ", ";
+
+            if(current==initial) cout << network[current].name << ", ";
+            else cout << network[current].name << ", " << charge/rate << ", ";
+            
             capacity = capacity - d_matrix[current][next] + charge;
         }
     }    
